@@ -1,0 +1,11 @@
+C# Essentials Notes - Table of Contents
+#[1] - Als gebruiker kan ik op de Enter Knop klikken om een button te activeren
+#[2] - How to detect if a key is pressed?
+#[3] - How to round a float when displaying as a string?
+#[4] - Try a function to see if it works and catch errors
+#[5] - Continue text from a new line in XAML
+#[6] - Separate thousands (Number Formating)
+#[7] - Check if Textbox is empty or white space
+#[8] - Check voor schrikkeljaar (Leapyear)
+#[9] - Add LineBreak for tooltip in XAML
+#[10] - Make your window look the same in designer and debug mode

@@ -1,0 +1,81 @@
+#[1] Als gebruiker kan ik op de Enter Knop klikken om een button te activeren
+//Zet in de XAML attributes van de button
+ IsDefault="True"
+
+#[2] How to detect if a key is pressed?
+
+private void Windows_KeyDown(object sender, KeyEventArgs e) //Create this to detect keypresses
+{
+	if (e.Key == Key.[WhateverKey]) //If a certain key is pressed
+	{
+		//Do action
+	}
+}
+
+#[3] How to round a float when displaying as a string?
+float f = 21,5678;
+string MyText = Math.Round((decimal)f, 2).ToString(); //Output: 21,57
+
+#[4] Try a function to see if it works and catch errors
+//Example: You want to see if the text that the user has put in can be converted into an int
+try 
+{
+	int i = int.Parse(TextBox1.Text); //Try parsing the value into an int
+}
+catch (Exception) //Catch Errors
+{
+	MessageBox.Show("Please fill in a correct int value"); //Display a message
+	return; //Stop operation
+}
+
+#[5] Continue text from a new line in XAML (Check #9 for tooltip)
+//In this example, we have a textblock and we want to add a new line.
+//Important to note that you have to split up the textblock function into ==>
+// <TextBlock> <TextBlock/>
+//So that you can input your command for the new line
+<TextBlock /*Some atributes*/>
+Here comes the plain text
+<linebreak/> //Add a new line
+Here follows more text on the next line
+</TextBlock>
+
+#[6] Separate thousands (Number Formating)
+// Gets a NumberFormatInfo associated with the nl-BE culture.
+      NumberFormatInfo nfi = new CultureInfo( "nl-BE", false ).NumberFormat;
+// Displays the same value with a blank as the separator.
+      nfi.NumberGroupSeparator = " ";
+	  string Output = Getal.ToString("N", nfi);
+	  
+#[7] Check if Textbox is empty or white space
+//You can add a '!' in the beginning to check wether it's NOT EQUAL TO
+if (/!/String.IsNullOrEmpty(Textbox1.Text))
+{
+	//Checks if its Empty
+}
+
+if (/!/String.IsNullOrWhiteSpace(Textbox1.Text))
+{
+	//Checks if its empty or has just white spaces
+}
+
+#[8] Check voor schrikkeljaar (Leapyear)
+int Jaar1 = 2012
+int Jaar2 = 1900
+
+if (DateTime.IsLeapYear(Jaar1))
+{
+	//Jaar1 is een schrikkeljaar
+}
+
+if (DateTime.IsLeapYear(Jaar2))
+{
+	//Jaar2 is geen schrikkeljaar
+}
+
+#[9] Add LineBreak for tooltip in XAML
+tooltip="First line &#10;Second Line" //Just put &#10; to add a new line
+
+#[10] Make your window look the same in designer and debug mode
+1) "In Window": SizeToContent="WidthAndHeight"
+2) "Put Height and width to auto"
+3) "Define your size in your main grid"

@@ -1,0 +1,177 @@
+## Useful notes:
+- "Hitting tab will auto complete your sentence. Fe: Typing name of a branch"
+- "Use Quotation marks to refer to files with spaces in between"
+- "If .gitignore doesn't ignore a file, try uncaching it. If it the file has been saved once, it will not be ignored."
+- "If you want to refer to all files with a certain filetype, use [*.TYPE]"
+
+# CLone your repos
+git clone [URL]
+
+# Move to the folder your working on
+cd [Folder Adress]
+
+# List everything in your folder
+ls -la
+
+# Check status
+git status
+
+# Track added/modified files "Adds files to be tracked/saved. This is local."
+[1] git add . ". = period, tracks all the files"
+[2] git add [FileName] "Manually track files"
+
+"Need to track files before you can commit them"
+
+# Commit Files "Actually saves files. Still local."
+git commit -m "Message" -m "Descrition"
+
+"Git commit needs atleast one message [-m "message"]"
+"Second Message is your description, also [-m "Description"]"
+"Commiting is only localy, you still need to push it live"
+
+# Commit Same file from different branch
+git commit -am "message"
+
+"Because the file already existed and is just modified, you can use the commandline above"
+"-a stands for all, m is still message"
+
+# Pushin files live "Saved files are now live"
+"You need to have a repository on github before you can push. You can create this on github's website"
+
+##	Remote to the repository you want to save to
+	git remote add origin [URL-Repository] "Found on github"
+##
+
+"Before you push files, you need to have an SSH key"
+git push origin main
+
+"Origin is de location"
+
+# Generating an SSH key [12201630@student.pxl.be]
+"You have to prove that your the owner of the account"
+ssh-keygen -t rsa -b 4096 -C "Your git Email"
+
+"-t = type of encryption"
+"-b = strength of encryption"
+"-c = Github Email adress"
+
+"Default ssh-key save folder =  (/c/Users/emre_/.ssh/id_rsa):"
+
+Enter file in which to save the key (/c/Users/emre_/.ssh/id_rsa): [Rename Optional]
+Enter passphrase (empty for no passphrase): [Password Optional]
+
+# Search for the key that you have generated
+ls | grep [Name Key]
+
+"You'll find 2 keys. One has ".pub" at the end. Pub stands for Public, which means it's okay for others to see"
+"The one without '.pub' is your private key. Keep it secure on your machine, don't share it"
+"Private key is a prove that you're the one who generated the public key"
+
+# Print out your public key
+cat [KeyName.pub]
+"EX: SSH-RSA ... [Email]"
+
+"Copy this key. 
+Go to github.com -> Settings -> SSH and GPG keys 
+then click on New SSH Key"
+
+"Git needs to know about this generated key"
+"Add this key to the agent. Refer to --> for more information
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"
+
+# Turn a local folder into a git repos folder
+git init
+
+"You need to be in your folder within your gitbash, if not, move to it using #2"
+"Can't push this folder live yet. You need to have an empty repository on github first"
+
+# Add your local folder to the empty repository
+git remote add origin [URL]
+"Now you can push your files into this live repository"
+
+# Check what repository your connected to
+git remote -v
+
+# Set a default push location
+git push -u origin main
+"The '-u' (Upstream) will make this location the default location. So in the future, you can leave out the origin main"
+
+# View branches
+git branch "View local branches"
+git branch -r "View Remote Branches"
+git branch -a "View Local and Remote branches"
+
+# Create Branche
+git checkout -b [Name]
+"Checkout = switch branch || -b = create a new branch"
+
+# Open a file via git
+start [FileName]
+
+# Open a file with a different program (Notepad)
+Notepad [filename]
+
+# Check differences between 2 branches
+"Within the first branch you want to compare (Branch1)"
+git diff [BranchName2]
+
+"Shows in red what is missing (or removed) and in green what is added"
+
+# Merging a subbranch to the basebranch
+- "Commit and push your subbranch to github"
+- "Open github ..."
+"Changes are only live but not locally yet. Do a pull request from your basebranch"
+
+# Pull request
+git pull
+
+# Remove a branch
+"Now that you have merged 2 branches, you don't need the subbranch anymore"
+git branch -d [BranchName]
+
+# Localy merging
+git merge [BranchName]
+## What if merging conflicts occur?
+"Open code --> Remove conflict text --> Save --> Commit"
+"When viewing code, you can see the differences and modify it."
+
+# Unstage changes
+"When you've added your file but haven't commited yet"
+git reset "Undo all changes"
+git reset [FileName] "One file only"
+
+git reset HEAD~1 "In full caps, refers to the last commit. ~1 goes 1 commit further"
+git reset [CommitHash] "Can be found in logs"
+
+"The file now is unstaged"
+"Changes are still present"
+## How to unmerge
+git reset HEAD~1 
+
+# Restore changes
+git restore [filename]
+git restore .
+
+"If you've modified the files and want to go back before the changes"
+
+# Completely remove changes
+git reset --hard [commitHash]
+
+# View all commits (logs)
+git log 
+git log --all "Shows all logs"
+
+# Revert back to a previous state
+git checkout [CommitHash]
+
+"Creates a temporary branch and reverts back the code to how it was when this was commited"
+"To return, checkout your regular branch"
+
+# Create a new file via git
+touch [FileName.FileType]
+
+# Remove a file via git
+rm [FileName
+
+# Remove Cached files
+git rm --cached [FileName]
