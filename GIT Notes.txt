@@ -41,6 +41,9 @@ git commit -am "message"
 ##	Remote to the repository you want to save to
 	git remote add origin [URL-Repository] "Found on github"
 ##
+## Change Remote URL "In case you can't push your files"
+git remote set-url origin [HTTPSLINK]
+##
 
 "Before you push files, you need to have an SSH key"
 git push origin main
@@ -175,3 +178,6 @@ rm [FileName
 
 # Remove Cached files
 git rm --cached [FileName]
+
+# Push a locally created branch (If it doesn't exist online yet)
+git push --set-upstream origin [BranchName]
